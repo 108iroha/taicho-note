@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f8a7a">
+  <meta name="description" content="血圧・呼吸数・体重・体調・食事・睡眠・運動・服薬を記録して、グラフで推移を確認できるアプリ">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="体調ノート">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <title>体調ノート</title>
+</head>
+<body>
+  <header class="appbar">
+    <div class="appbar-inner" id="appbar"></div>
+  </header>
+
+  <main id="view"></main>
+
+  <nav class="tabbar" aria-label="メニュー">
+    <div class="tabbar-inner">
+      <button data-tab="record" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M8.5 10h7M8.5 14h7M8.5 18h4"/></svg>
+        記録
+      </button>
+      <button data-tab="graph" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4v16h16"/><path d="M7 15l4-5 3 3 5-6"/></svg>
+        グラフ
+      </button>
+      <button data-tab="history" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+        履歴
+      </button>
+      <button data-tab="settings" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+        設定
+      </button>
+    </div>
+  </nav>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <dialog id="respDialog" class="sheet">
+    <h2>呼吸数をはかる</h2>
+    <p class="muted small">「開始」を押したら、30秒間、息を吸うたびに円をタップしてください。回数を2倍して1分あたりの呼吸数にします。</p>
+    <button type="button" id="respTap" class="tap-circle">開始</button>
+    <p class="resp-status"><span id="respTime">30</span>秒　<span id="respCount">0</span>回</p>
+    <div class="sheet-actions">
+      <button type="button" class="btn ghost" data-action="resp-close">閉じる</button>
+      <button type="button" class="btn" data-action="resp-apply" id="respApply" disabled>入力する</button>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

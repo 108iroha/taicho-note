@@ -1,0 +1,17 @@
+{
+  "name": "体調ノート",
+  "short_name": "体調ノート",
+  "description": "血圧・呼吸数・体重・体調・食事・睡眠・運動・服薬を記録して、グラフで推移を確認",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f2f5f6",
+  "theme_color": "#1f8a7a",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
